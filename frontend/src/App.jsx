@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Navbar from "./components/Navbar";
 import Homepage from "./components/Pages/Homepage";
 import Chatpage from "./components/Pages/Chatpage";
-import { Button, ButtonGroup } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./components/Pages/Home/Home";
 import "./App.css";
+
 function App() {
   const [count, setCount] = useState(0);
   const router = createBrowserRouter([
@@ -12,7 +12,7 @@ function App() {
       path: "/",
       element: (
         <>
-          <Navbar />
+          <Home></Home>
           <Homepage />
         </>
       ),
@@ -21,7 +21,6 @@ function App() {
       path: "/chat",
       element: (
         <>
-          <Navbar />
           <Chatpage />
         </>
       ),
