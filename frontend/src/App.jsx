@@ -2,7 +2,7 @@ import { useState } from "react";
 import Chatpage from "./components/Pages/Chats/Chatpage";
 import Auth from "./components/Pages/Auth/Auth";
 import { Routes, Route } from "react-router-dom";
-import NotFound from "./components/Pages/notFound/notFound";
+import NotFound from "./components/Pages/NotFound/NotFound";
 import "./App.css";
 
 function App() {
