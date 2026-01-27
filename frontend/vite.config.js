@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [tailwindcss(), react()],
   server: {
+    allowedHosts: ["hypogastric-reinaldo-submissively.ngrok-free.dev"],
     port: 5173,
     proxy: { "/api": "http://localhost:8080" },
   },
