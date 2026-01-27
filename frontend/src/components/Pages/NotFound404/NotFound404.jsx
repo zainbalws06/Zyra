@@ -2,7 +2,7 @@ import React from "react";
 import UpperBox from "../Auth/UpperBox";
 import { useNavigate } from "react-router-dom";
 
-const notFound = () => {
+const NotFound = () => {
   let navigate = useNavigate();
   const navigator = () => {
     navigate("/");
@@ -35,4 +35,4 @@ const notFound = () => {
   );
 };
 
-export default notFound;
+export default NotFound;
