@@ -4,7 +4,7 @@ const UpperBox = () => {
   return (
     <div>
       <div className=" p-3 w-full max-w-md text-white font-semibold  flex justify-center">
-        <p className="text-3xl sm:text-4xl md:text-5xl">
+        <p className="text-5xl sm:text-4xl md:text-5xl">
           <i className="fa-solid fa-comment-dots text-[#865CE9]"></i> Zyra
         </p>
       </div>

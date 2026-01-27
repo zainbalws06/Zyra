@@ -20,7 +20,7 @@ const Nav = ({ mode, setMode }) => {
       </div>
 
       <div
-        className={`block w-1/2 text-center h-10 py-2 rounded-sm  ${mode === "signup" ? "border-b-2 border-purple-900" : "hover:shadow-white/5 hover:shadow-inner "}`}
+        className={`block w-1/2 text-center h-10 rounded-sm  ${mode === "signup" ? "border-b-2 border-purple-900" : "hover:shadow-white/5 hover:shadow-inner "}`}
       >
         <button
           onClick={() => {

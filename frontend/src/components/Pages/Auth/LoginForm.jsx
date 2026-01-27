@@ -57,10 +57,10 @@ const LoginForm = () => {
               e.preventDefault();
               changeEye();
             }}
-            className="absolute right-2 top-2 text-sm"
+            className="absolute w-7 h-7 cursor-pointer right-1 top-1 text-sm"
           >
             <i
-              className={`fa-solid fa-eye ${eye === true ? "text-blue-400" : ""}`}
+              className={`fa-solid  fa-eye ${eye === true ? "text-blue-400" : ""}`}
             ></i>
           </button>
         </div>
