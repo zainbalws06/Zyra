@@ -10,7 +10,7 @@ const errorHandler = (err, req, res, next) => {
     statusCode = 500;
   }
   res.status(statusCode);
-  res.json({ msg: `${err.message}` });
+  res.json({ msg: `there was an error puddy` });
 };
 
 module.exports = { notFound, errorHandler };
