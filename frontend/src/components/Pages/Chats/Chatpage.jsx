@@ -1,7 +1,14 @@
 import React from "react";
+import Left from "./Left";
+import Right from "./Right";
 
 const Chatpage = () => {
-  return <div>Chatpage</div>;
+  return (
+    <div className="flex flex-row">
+      <Left />
+      <Right />
+    </div>
+  );
 };
 
 export default Chatpage;
