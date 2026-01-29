@@ -3,3 +3,7 @@
     font-family: "Inter", sans-serif;
     
 }
+.errMessage{
+    color: red;
+    font-size: small;
+}

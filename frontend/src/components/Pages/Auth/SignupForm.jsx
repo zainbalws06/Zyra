@@ -1,12 +1,16 @@
 import React from "react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const SignupForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   const [pfp, setPfp] = useState("No file chosen");
-  const [pic, setPic] = useState(null);
   const [eye, setEye] = useState(false);
 
   const changeEye = () => {
@@ -17,82 +21,94 @@ const SignupForm = () => {
   const pfpChange = (val) => {
     setPfp(val);
   };
-  const picChange = (val) => {
-    setPic(val);
-  };
-  const nameChange = (val) => {
-    setName(val);
-  };
-  const emailChange = (val) => {
-    setEmail(val);
-  };
-  const passwordChange = (val) => {
-    setPassword(val);
-  };
+
+  function submit(data) {
+    console.log(data);
+  }
 
   return (
     <div className="p-5">
-      <form>
+      <form onSubmit={handleSubmit(submit)}>
         <label htmlFor="name" className="font-medium block mt-2 mb-2 ">
           Name
         </label>
         <input
-          value={name}
-          onChange={(e) => {
-            nameChange(e.target.value);
-          }}
-          className=" block w-full outline-[#272944] outline-2 rounded-sm h-9 mb-5 p-2 pl-3 text-sm hover:shadow-gray-700/40 hover:shadow-inner"
+          {...register("name", {
+            required: { value: true, message: "Please enter your name." },
+            minLength: {
+              value: 3,
+              message: "Name must be at least 3 characters.",
+            },
+            maxLength: {
+              value: 70,
+              message: "Name can't be longer than 70 characters.",
+            },
+          })}
+          className={`block w-full outline-2 rounded-sm h-9 mb-5 p-2 pl-3 text-sm hover:shadow-gray-700/40 hover:shadow-inner ${errors.name ? "outline-red-600" : "outline-[#272944]"}`}
           id="name"
-          type="text"
-          required
+          type="name"
           placeholder="Enter your name"
-          name="name"
         ></input>
-
-        <label htmlFor="email" className="font-medium  mt-5 block mb-2">
+        {errors.name && (
+          <div className="errMessage -mt-3">{errors.name.message}</div>
+        )}
+        <label htmlFor="email" className="font-medium  mt-2 block mb-2">
           Email
         </label>
         <input
-          value={email}
-          onChange={(e) => {
-            emailChange(e.target.value);
-          }}
-          className=" block w-full outline-[#272944] outline-2 rounded-sm h-9 mb-5 p-2 pl-3 text-sm hover:shadow-gray-700/40 hover:shadow-inner"
+          {...register("email", {
+            required: {
+              value: true,
+              message: "Please enter your email address.",
+            },
+            maxLength: { value: 254, message: "Email address is too long." },
+          })}
+          className={`block w-full outline-2 rounded-sm h-9 mb-5 p-2 pl-3 text-sm hover:shadow-gray-700/40 hover:shadow-inner ${errors.email ? "outline-red-600" : "outline-[#272944]"}`}
           id="email"
-          type="text"
-          required
+          type="email"
           placeholder="Enter your email"
-          name="email"
         ></input>
+
+        {errors.email && (
+          <div className="errMessage -mt-3">{errors.email.message}</div>
+        )}
 
         <label htmlFor="password" className="font-medium block mt-2 mb-2 ">
           Password
         </label>
         <div className=" flex flex-row relative">
           <input
-            value={password}
-            onChange={(e) => {
-              passwordChange(e.target.value);
-            }}
-            className=" block w-full outline-[#272944] outline-2 rounded-sm h-9 mb-5 p-2 pl-3 text-sm hover:shadow-gray-700/40 hover:shadow-inner"
+            {...register("password", {
+              required: { value: true, message: "Please enter your password." },
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters.",
+              },
+              maxLength: {
+                value: 64,
+                message: "Password can't be longer than 64 characters.",
+              },
+            })}
+            className={` block w-full outline-2 rounded-sm h-9 mb-5 p-2 pl-3 text-sm hover:shadow-gray-700/40 hover:shadow-inner ${errors.password ? "outline-red-600" : "outline-[#272944]"} `}
             id="password"
             type={eye === false ? "password" : "text"}
-            required
             placeholder="Enter your password"
-            name="password"
           ></input>
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              changeEye();
-            }}
+            type="button"
             className="absolute w-7 h-7 cursor-pointer right-1 top-1 text-sm"
+            onClick={changeEye}
           >
             <i
               className={`fa-solid fa-eye ${eye === true ? "text-blue-400" : ""}`}
             ></i>
           </button>
         </div>
+
+        {errors.password && (
+          <div className="errMessage -mt-3">{errors.password.message}</div>
+        )}
+
         <label htmlFor="pic" className="font-medium block mt-2 mb-2 ">
           Profile Picture
         </label>
@@ -103,22 +119,24 @@ const SignupForm = () => {
           Choose File
           <input
             onChange={(e) => {
-              picChange(e.target.files[0]);
               pfpChange(e.target.files[0].name);
             }}
             id="pic"
             className="bg-black"
             hidden
             type="file"
-            name="pic"
             accept="image/*"
           />
         </label>
         <span className="pl-2 text-sm">{pfp}</span>
+
+        <button
+          type="submit"
+          className=" shadow-white/30 shadow-inner bg-[#593CCA] cursor-pointer w-full p-2 rounded-md mt-5 font-semibold hover:bg-[#3b3da7] active:bg-[#2c2d70]"
+        >
+          Continue
+        </button>
       </form>
-      <button className=" shadow-white/30 shadow-inner bg-[#593CCA] cursor-pointer w-full p-2 rounded-md mt-5 font-semibold hover:bg-[#3b3da7] active:bg-[#2c2d70]">
-        Continue
-      </button>
     </div>
   );
 };
