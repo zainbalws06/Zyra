@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   const {
@@ -24,6 +25,12 @@ const SignupForm = () => {
 
   function submit(data) {
     console.log(data);
+  }
+
+  let navigate = useNavigate();
+
+  function navigator() {
+    navigate("/chats");
   }
 
   return (
@@ -137,6 +144,9 @@ const SignupForm = () => {
           Continue
         </button>
       </form>
+      <button onClick={navigator} className="h-100">
+        Navigate
+      </button>
     </div>
   );
 };
