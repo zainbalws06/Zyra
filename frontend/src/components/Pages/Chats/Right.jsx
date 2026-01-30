@@ -5,7 +5,7 @@ import RightMidChat from "./RightMidChat";
 
 const Right = () => {
   return (
-    <div className="w-full bg-amber-500 h-screen">
+    <div className="w-full bg-[#191A36]  h-screen flex flex-col">
       <RightTop />
       <RightMidChat />
       <RightBottom />
