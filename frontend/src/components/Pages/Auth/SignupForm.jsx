@@ -28,9 +28,13 @@ const SignupForm = () => {
 
   async function submit(data) {
     try {
-      const res = await axios.post("/api/data/signup", data, {
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await axios.post(
+        "https://zyra-32ze.onrender.com/api/data/signup",
+        data,
+        {
+          headers: { "Content-Type": "application/json" },
+        },
+      );
       console.log("res send ", res);
       navigator("/chats");
     } catch {
