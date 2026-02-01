@@ -8,6 +8,6 @@ export default defineConfig({
   server: {
     allowedHosts: ["hypogastric-reinaldo-submissively.ngrok-free.dev"],
     port: 5173,
-    proxy: { "/api": "http://localhost:8080" },
+    proxy: { "/api": "https://zyra-32ze.onrender.com" },
   },
 });

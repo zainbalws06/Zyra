@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   const {
@@ -22,8 +24,18 @@ const SignupForm = () => {
     setPfp(val);
   };
 
-  function submit(data) {
-    console.log(data);
+  let navigator = useNavigate();
+
+  async function submit(data) {
+    try {
+      const res = await axios.post("/api/data/signup", data, {
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log("res send ", res);
+      navigator("/chats");
+    } catch {
+      console.log("could not send res");
+    }
   }
 
   return (
